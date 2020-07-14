@@ -1,0 +1,13 @@
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<% if @article.errors.any? %>
+	<h2>Following errors occured while saving article:</h2>
+	<ul>
+	<% @article.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+	</ul>
+<% end %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
