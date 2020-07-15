@@ -1,13 +1,13 @@
+<% if obj.errors.any? %>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-<% if @article.errors.any? %>
-	<h2>Following errors occured while saving article:</h2>
+	<h4 class="alert-heading">The following errors prevented the <%= obj.class.name.downcase %> from being saved</h4>
 	<ul>
-	<% @article.errors.full_messages.each do |msg| %>
+	<% obj.errors.full_messages.each do |msg| %>
 		<li><%= msg %></li>
 	<% end %>
 	</ul>
-<% end %>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+<% end %>
