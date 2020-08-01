@@ -1,0 +1,34 @@
+<div class="container">
+	<h1 class="text-center mt-4">Members of AlphaBlog</h1>
+
+<div class="apple_pagination">
+    <%= will_paginate @users, :container => false %>
+</div>
+
+<% @users.each do |user| %>
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <div class="card text-center mt-4 shadow nb5 bg-white rounded">
+        <div class="card-header">
+        <%= link_to user.username, user %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to gravatar_for(user, size: 150), user%></h5>
+          <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
+          <%= link_to 'User profile', user, class: "btn btn-outline-success"%>
+          <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-outline-secondary"%>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
+</div>
+<div class="apple_pagination">
+    <%= will_paginate @users, :container => false %>
+</div>
+
+	
+</div>
