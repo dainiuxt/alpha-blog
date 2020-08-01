@@ -6,33 +6,38 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to 'Home', root_path, class: "nav-link" %>
-      </li>
       <li class="nav-item">
-        <%= link_to 'Index', articles_path, class: "nav-link" %>
+        <%= link_to 'Articles', articles_path, class: "nav-link" %>
       </li>
+
+      <% if logged_in? %>
+      <li class="nav-item">
+        <%= link_to 'New article', new_article_path, class: "nav-link" %>
+      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Article
+          User menu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'New article', new_article_path, class: "dropdown-item" %>
-          <%= link_to 'Index', articles_path, class: "dropdown-item" %>
+          <%= link_to "#{current_user.username} profile", user_path(current_user), class: "dropdown-item" %>
+          <%= link_to 'Update your profile', edit_user_path(current_user), class: "dropdown-item" %>
+          <%= link_to 'Logout', logout_path, class: "dropdown-item", method: :delete %>
         </div>
       </li>
       <li class="nav-item">
         <%= link_to 'Users', users_path, class: "nav-link" %>
       </li>   
+      <% else %>
+
       <li class="nav-item">
         <%= link_to 'Signup', signup_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to 'Log in', login_path, class: "nav-link" %>
-      </li>      
-       <li class="nav-item">
-        <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
-      </li>      
+      </li> 
+
+      <% end %>     
      
     </ul>
     <form class="form-inline my-2 my-lg-0">
