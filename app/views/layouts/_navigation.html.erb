@@ -23,6 +23,7 @@
           <%= link_to "#{current_user.username} profile", user_path(current_user), class: "dropdown-item" %>
           <%= link_to 'Update your profile', edit_user_path(current_user), class: "dropdown-item" %>
           <%= link_to 'Logout', logout_path, class: "dropdown-item", method: :delete %>
+          <%= link_to 'Delete your profile', user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure? This action is irreversible!" } %>
         </div>
       </li>
       <li class="nav-item">
